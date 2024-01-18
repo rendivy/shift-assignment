@@ -6,10 +6,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shift_application.common.Constants
-import com.example.shift_application.domain.usecase.RegisterUserUseCase
-import com.example.shift_application.domain.usecase.ValidateNameUseCase
-import com.example.shift_application.domain.usecase.ValidatePasswordUseCase
-import com.example.shift_application.domain.usecase.ValidateSurnameUseCase
+import com.example.shift_application.domain.usecase.validate.RegisterUserUseCase
+import com.example.shift_application.domain.usecase.validate.ValidateNameUseCase
+import com.example.shift_application.domain.usecase.validate.ValidatePasswordUseCase
+import com.example.shift_application.domain.usecase.validate.ValidateSurnameUseCase
 import com.example.shift_application.presentation.ui.state.RegistrationState
 import com.example.shift_application.utils.DateConverter
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -39,30 +39,6 @@ class RegistrationViewModel @Inject constructor(
             confirmPassword = Constants.EMPTY_STRING
         )
     )
-
-
-    private fun updateRegistrationAvailability() {
-        val fields = listOf(
-            _registrationState.value.name,
-            _registrationState.value.surname,
-            _registrationState.value.password,
-            _registrationState.value.confirmPassword,
-            _registrationState.value.birthDate
-        )
-
-        val errors = listOf(
-            _registrationState.value.nameError,
-            _registrationState.value.surnameError,
-            _registrationState.value.passwordError,
-            _registrationState.value.confirmPasswordError,
-        )
-
-        _registrationState.value = _registrationState.value.copy(
-            registrationIsAvailable =
-            fields.all { it != Constants.EMPTY_STRING } && errors.all { it == null }
-        )
-    }
-
 
     fun registerUser() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -121,6 +97,29 @@ class RegistrationViewModel @Inject constructor(
                     ).errorMessage
             )
         updateRegistrationAvailability()
+    }
+
+
+    private fun updateRegistrationAvailability() {
+        val fields = listOf(
+            _registrationState.value.name,
+            _registrationState.value.surname,
+            _registrationState.value.password,
+            _registrationState.value.confirmPassword,
+            _registrationState.value.birthDate
+        )
+
+        val errors = listOf(
+            _registrationState.value.nameError,
+            _registrationState.value.surnameError,
+            _registrationState.value.passwordError,
+            _registrationState.value.confirmPasswordError,
+        )
+
+        _registrationState.value = _registrationState.value.copy(
+            registrationIsAvailable =
+            fields.all { it != Constants.EMPTY_STRING } && errors.all { it == null }
+        )
     }
 
 

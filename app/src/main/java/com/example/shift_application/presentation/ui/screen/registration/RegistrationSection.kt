@@ -22,6 +22,8 @@ import com.example.shift_application.presentation.ui.screen.component.Validation
 import com.example.shift_application.presentation.ui.screen.datepicker.DatePickerAlert
 import com.example.shift_application.presentation.ui.state.RegistrationState
 import com.example.shift_application.presentation.ui.theme.TitleSmall
+import com.example.shift_application.presentation.ui.theme.semiLargePadding
+import com.example.shift_application.presentation.ui.theme.shortPadding
 
 @Composable
 private fun RegistrationField(
@@ -39,7 +41,7 @@ private fun RegistrationField(
         style = TitleSmall,
         color = Color.Black
     )
-    Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(shortPadding))
     CustomTextField(
         onValueChange = onValueChange,
         textFieldValue = textFieldValue,
@@ -63,7 +65,7 @@ private fun PasswordField(
         style = TitleSmall,
         color = Color.Black
     )
-    Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(shortPadding))
     PasswordTextField(onValueChange = onValueChange, textFieldValue = textFieldValue, error = error)
 }
 
@@ -86,7 +88,7 @@ fun RegistrationSection(
     if (registrationState.nameError != null) {
         ValidationErrorAnimation(errorMessage = registrationState.nameError)
     }
-    Spacer(modifier = Modifier.height(22.dp))
+    Spacer(modifier = Modifier.height(semiLargePadding))
     RegistrationField(
         labelId = R.string.surname,
         textFieldValue = registrationState.surname,
@@ -97,7 +99,7 @@ fun RegistrationSection(
     if (registrationState.surnameError != null) {
         ValidationErrorAnimation(errorMessage = registrationState.surnameError)
     }
-    Spacer(modifier = Modifier.height(22.dp))
+    Spacer(modifier = Modifier.height(semiLargePadding))
     Text(
         text = stringResource(id = R.string.birthDate),
         modifier = Modifier
@@ -106,13 +108,13 @@ fun RegistrationSection(
         style = TitleSmall,
         color = Color.Black
     )
-    Spacer(modifier = Modifier.height(8.dp))
+    Spacer(modifier = Modifier.height(shortPadding))
     CustomClickableBox(
         checked = isDialogOpen,
         birth = registrationState.birthDate ?: Constants.EMPTY_STRING,
         error = null
     )
-    Spacer(modifier = Modifier.height(22.dp))
+    Spacer(modifier = Modifier.height(semiLargePadding))
     PasswordField(
         labelId = R.string.password,
         textFieldValue = registrationState.password,
@@ -122,7 +124,7 @@ fun RegistrationSection(
     if (registrationState.passwordError != null) {
         ValidationErrorAnimation(errorMessage = registrationState.passwordError)
     }
-    Spacer(modifier = Modifier.height(22.dp))
+    Spacer(modifier = Modifier.height(semiLargePadding))
     PasswordField(
         labelId = R.string.confirmPassword,
         textFieldValue = registrationState.confirmPassword,
@@ -132,7 +134,7 @@ fun RegistrationSection(
     if (registrationState.confirmPasswordError != null) {
         ValidationErrorAnimation(errorMessage = registrationState.confirmPasswordError)
     }
-    Spacer(modifier = Modifier.height(22.dp))
+    Spacer(modifier = Modifier.height(semiLargePadding))
 
     if (isDialogOpen.value) {
         DatePickerAlert(

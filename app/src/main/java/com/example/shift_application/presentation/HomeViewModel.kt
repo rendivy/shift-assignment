@@ -6,7 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shift_application.common.Constants
-import com.example.shift_application.domain.repository.RegistrationRepository
+import com.example.shift_application.domain.usecase.GetUserInformationUseCase
+import com.example.shift_application.domain.usecase.LogoutUseCase
 import com.example.shift_application.presentation.ui.state.HomeState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -15,8 +16,9 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(private val repository: RegistrationRepository) :
-    ViewModel() {
+class HomeViewModel @Inject constructor(
+    private val logoutUseCase: LogoutUseCase,
+    private val getUserInformationUseCase: GetUserInformationUseCase) : ViewModel() {
 
     val homeState: MutableState<HomeState>
         get() = _homeState
@@ -29,15 +31,15 @@ class HomeViewModel @Inject constructor(private val repository: RegistrationRepo
         )
     )
 
-    fun logout(){
+    fun logout() {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.logout()
+            logoutUseCase.execute()
         }
     }
 
     fun getUserInformation() {
         viewModelScope.launch(Dispatchers.IO) {
-            val userInformation = repository.getUserInformation()
+            val userInformation = getUserInformationUseCase.execute()
             _homeState.value = _homeState.value.copy(
                 name = userInformation.name,
                 surname = userInformation.surname,

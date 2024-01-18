@@ -1,4 +1,4 @@
-package com.example.shift_application.domain.usecase
+package com.example.shift_application.domain.usecase.validate
 
 import com.example.shift_application.data.entity.RegistrationBody
 import com.example.shift_application.domain.repository.RegistrationRepository

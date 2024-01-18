@@ -8,6 +8,7 @@
     <string name="password">Пароль</string>
     <string name="logout">Выйти</string>
     <string name="close">Закрыть</string>
+    <string name="confirm">Подтвердить</string>
     <string name="register">Регистрация</string>
     <string name="confirmPassword">Повторите пароль</string>
 </resources>

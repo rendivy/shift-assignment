@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 
 @Module
@@ -16,12 +17,14 @@ import dagger.hilt.components.SingletonComponent
 object DataModule {
 
     @Provides
+    @Singleton
     fun provideRegistrationRepository(credentialsStorage: CredentialsStorage): RegistrationRepository {
         return RegistrationRepositoryImpl(credentialsStorage = credentialsStorage)
     }
 
 
     @Provides
+    @Singleton
     fun provideCredentialsStorage(@ApplicationContext context: Context): CredentialsStorage {
         return CredentialsStorage(context = context)
     }

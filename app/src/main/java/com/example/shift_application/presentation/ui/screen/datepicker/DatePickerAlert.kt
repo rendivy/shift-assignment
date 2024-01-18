@@ -17,8 +17,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
+import com.example.shift_application.R
 import com.example.shift_application.presentation.ui.theme.UbuntuRegular
 import java.time.LocalDateTime
 
@@ -56,7 +58,7 @@ fun DatePickerAlert(checked: MutableState<Boolean>, onClick: (Long?) -> Unit) {
                             onClick(datePickerState.selectedDateMillis)
                         }) {
                         Text(
-                            text = "Подтвердить",
+                            text = stringResource(id = R.string.confirm),
                             style = TextStyle(
                                 fontSize = 16.sp,
                                 fontFamily = UbuntuRegular,

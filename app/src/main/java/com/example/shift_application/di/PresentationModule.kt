@@ -1,10 +1,10 @@
 package com.example.shift_application.di
 
 import com.example.shift_application.domain.repository.RegistrationRepository
-import com.example.shift_application.domain.usecase.RegisterUserUseCase
-import com.example.shift_application.domain.usecase.ValidateNameUseCase
-import com.example.shift_application.domain.usecase.ValidatePasswordUseCase
-import com.example.shift_application.domain.usecase.ValidateSurnameUseCase
+import com.example.shift_application.domain.usecase.GetUserInformationUseCase
+import com.example.shift_application.domain.usecase.validate.ValidateNameUseCase
+import com.example.shift_application.domain.usecase.validate.ValidatePasswordUseCase
+import com.example.shift_application.domain.usecase.validate.ValidateSurnameUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,9 +20,10 @@ object PresentationModule {
     }
 
     @Provides
-    fun provideRegisterUserUseCase(registrationRepository: RegistrationRepository): RegisterUserUseCase {
-        return RegisterUserUseCase(registrationRepository = registrationRepository)
+    fun provideGetUserInfoUseCase(registrationRepository: RegistrationRepository): GetUserInformationUseCase {
+        return GetUserInformationUseCase(repository = registrationRepository)
     }
+
 
     @Provides
     fun provideValidateSurnameUseCase(): ValidateSurnameUseCase {

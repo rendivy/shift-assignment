@@ -28,6 +28,8 @@ import com.example.shift_application.R
 import com.example.shift_application.common.NavigationConstants
 import com.example.shift_application.presentation.HomeViewModel
 import com.example.shift_application.presentation.ui.theme.TitleRegular
+import com.example.shift_application.presentation.ui.theme.largePadding
+import com.example.shift_application.presentation.ui.theme.shortPadding
 
 
 @Composable
@@ -53,7 +55,7 @@ fun HomeScreen(
             onClick = { showDialog.value = true },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
+                .padding(start = largePadding, end = largePadding),
             shape = RoundedCornerShape(size = 10.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Black
@@ -63,10 +65,10 @@ fun HomeScreen(
                 text = stringResource(id = R.string.greetings),
                 style = TitleRegular,
                 color = Color.White,
-                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                modifier = Modifier.padding(top = shortPadding, bottom = shortPadding)
             )
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(largePadding))
         Button(
             onClick = {
                 homeViewModel.logout()
@@ -78,7 +80,7 @@ fun HomeScreen(
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp),
+                .padding(start = largePadding, end = largePadding),
             shape = RoundedCornerShape(size = 10.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Gray
@@ -88,7 +90,7 @@ fun HomeScreen(
                 text = stringResource(id = R.string.logout),
                 style = TitleRegular,
                 color = Color.White,
-                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                modifier = Modifier.padding(top = shortPadding, bottom = shortPadding)
             )
         }
     }
@@ -115,13 +117,13 @@ private fun ModalWindow(name: String, onClick: () -> Unit) {
                 text = name,
                 style = TitleRegular,
                 color = Color.Black,
-                modifier = Modifier.padding(top = 20.dp, bottom = 20.dp)
+                modifier = Modifier.padding(top = largePadding, bottom = largePadding)
             )
             Button(
                 onClick = onClick,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 20.dp, end = 20.dp, bottom = 32.dp),
+                    .padding(start = largePadding, end = largePadding, bottom = 32.dp),
                 shape = RoundedCornerShape(size = 10.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color.Black
@@ -131,7 +133,7 @@ private fun ModalWindow(name: String, onClick: () -> Unit) {
                     text = stringResource(id = R.string.close),
                     style = TitleRegular,
                     color = Color.White,
-                    modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                    modifier = Modifier.padding(top = shortPadding, bottom = shortPadding)
                 )
             }
         }

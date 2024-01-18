@@ -18,6 +18,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.shift_application.presentation.ui.theme.UbuntuRegular
+import com.example.shift_application.presentation.ui.theme.mediumPadding
 import com.example.shift_application.presentation.ui.theme.shortPadding
 
 
@@ -49,7 +50,7 @@ fun CustomClickableBox(
             modifier = Modifier
                 .align(Alignment.CenterStart)
                 .fillMaxWidth()
-                .padding(start = 16.dp),
+                .padding(start = mediumPadding),
             style = TextStyle(
                 fontSize = 16.sp,
                 fontFamily = UbuntuRegular,

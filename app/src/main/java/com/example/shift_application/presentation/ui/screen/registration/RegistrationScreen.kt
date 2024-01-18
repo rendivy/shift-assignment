@@ -33,6 +33,8 @@ import com.example.shift_application.common.NavigationConstants
 import com.example.shift_application.presentation.RegistrationViewModel
 import com.example.shift_application.presentation.ui.theme.LargeTitle
 import com.example.shift_application.presentation.ui.theme.TitleRegular
+import com.example.shift_application.presentation.ui.theme.largePadding
+import com.example.shift_application.presentation.ui.theme.shortPadding
 
 
 @Composable
@@ -47,7 +49,7 @@ fun RegistrationScreen(
             .fillMaxSize()
             .background(color = Color.White)
             .verticalScroll(rememberScrollState())
-            .padding(start = 20.dp, end = 20.dp)
+            .padding(largePadding)
             .pointerInput(Unit) {
                 detectTapGestures(onTap = {
                     focusManager.clearFocus()
@@ -70,7 +72,7 @@ fun RegistrationScreen(
             registrationState = registrationState,
             registrationViewModel = registrationViewModel
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(largePadding))
         Button(
             onClick = {
                 registrationViewModel.registerUser()
@@ -90,7 +92,7 @@ fun RegistrationScreen(
                 text = stringResource(id = R.string.register),
                 style = TitleRegular,
                 color = Color.White,
-                modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                modifier = Modifier.padding(top = shortPadding, bottom = shortPadding)
             )
         }
     }

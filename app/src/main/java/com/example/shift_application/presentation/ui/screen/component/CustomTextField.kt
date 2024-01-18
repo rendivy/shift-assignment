@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.shift_application.common.Constants
 import com.example.shift_application.presentation.ui.theme.UbuntuRegular
+import com.example.shift_application.presentation.ui.theme.shortPadding
 
 @Composable
 fun CustomTextField(
@@ -34,12 +35,12 @@ fun CustomTextField(
         modifier = Modifier
             .background(
                 color = containerColor,
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(shortPadding)
             )
             .border(
                 width = 1.dp,
                 color = outlinedColor,
-                shape = RoundedCornerShape(8.dp)
+                shape = RoundedCornerShape(shortPadding)
             )
             .fillMaxWidth(),
         value = textFieldValue,

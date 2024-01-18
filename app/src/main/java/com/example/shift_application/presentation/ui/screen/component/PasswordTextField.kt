@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import com.example.shift_application.R
 import com.example.shift_application.common.Constants
 import com.example.shift_application.presentation.ui.theme.UbuntuRegular
+import com.example.shift_application.presentation.ui.theme.largePadding
 import com.example.shift_application.presentation.ui.theme.shortPadding
 
 @Composable
@@ -95,7 +96,7 @@ fun PasswordTextField(
                         .clickable(onClick = {
                             passwordVisibility = !passwordVisibility
                         })
-                        .size(20.dp),
+                        .size(largePadding),
                     tint = Color.Black,
                     contentDescription = null,
                 )
