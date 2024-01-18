@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">shift-application</string>
+    <string name="registration_label">Добро пожаловать! Давайте вместе создадим ваш аккаунт</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="birthDate">Дата рождения</string>
+    <string name="greetings">Приветствие</string>
+    <string name="password">Пароль</string>
+    <string name="logout">Выйти</string>
+    <string name="close">Закрыть</string>
+    <string name="register">Регистрация</string>
+    <string name="confirmPassword">Повторите пароль</string>
 </resources>
