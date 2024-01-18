@@ -1,6 +1,5 @@
 package com.example.shift_application.data.repostitory
 
-import android.util.Log
 import com.example.shift_application.data.entity.CredentialsBody
 import com.example.shift_application.data.entity.RegistrationBody
 import com.example.shift_application.data.shared.CredentialsStorage
@@ -26,7 +25,6 @@ class RegistrationRepositoryImpl @Inject constructor(private val credentialsStor
     }
 
     override suspend fun checkIfLoggedIn(): Boolean {
-        Log.d("TAG", "checkIfLoggedIn: " + credentialsStorage.getName())
         return credentialsStorage.isUserLoggedIn()
     }
 
