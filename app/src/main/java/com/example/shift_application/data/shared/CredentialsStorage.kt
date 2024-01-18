@@ -17,10 +17,6 @@ class CredentialsStorage(context: Context) {
         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
     )
 
-    fun getName(): String {
-        return sharedPreferences.getString("name", "") ?: ""
-    }
-
 
     fun isUserLoggedIn(): Boolean {
         return sharedPreferences.contains("name")
