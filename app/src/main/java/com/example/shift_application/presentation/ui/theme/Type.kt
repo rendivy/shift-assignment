@@ -29,7 +29,6 @@ val TitleSmall = TextStyle(
     lineHeight = 24.sp,
 )
 
-
 val TitleRegular = TextStyle(
     fontFamily = UbuntuRegular,
     fontSize = 18.sp,

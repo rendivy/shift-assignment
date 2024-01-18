@@ -7,5 +7,4 @@ class LogoutUseCase @Inject constructor(private val repository: RegistrationRepo
     suspend fun execute() {
         repository.logout()
     }
-
 }

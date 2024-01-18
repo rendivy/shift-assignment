@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shift_application.domain.usecase.IsUserLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -12,9 +12,11 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AuthViewModel @Inject constructor(private val isUserLoginUseCase: IsUserLoginUseCase) :
+class AuthViewModel @Inject constructor(
+    private val isUserLoginUseCase: IsUserLoginUseCase,
+    private val ioDispatcher: CoroutineDispatcher
+) :
     ViewModel() {
-
 
     init {
         checkIfLoggedIn()
@@ -25,9 +27,8 @@ class AuthViewModel @Inject constructor(private val isUserLoginUseCase: IsUserLo
 
     private var _authState: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
-
     private fun checkIfLoggedIn() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             _authState.value = isUserLoginUseCase.execute()
         }
     }

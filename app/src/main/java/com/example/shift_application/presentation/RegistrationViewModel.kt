@@ -13,7 +13,7 @@ import com.example.shift_application.domain.usecase.validate.ValidateSurnameUseC
 import com.example.shift_application.presentation.ui.state.RegistrationState
 import com.example.shift_application.utils.DateConverter
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,13 +22,12 @@ class RegistrationViewModel @Inject constructor(
     private val validateNameUseCase: ValidateNameUseCase,
     private val validateSurnameUseCase: ValidateSurnameUseCase,
     private val validatePasswordUseCase: ValidatePasswordUseCase,
-    private val registerUserUseCase: RegisterUserUseCase
+    private val registerUserUseCase: RegisterUserUseCase,
+    private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
-
 
     val registrationState: State<RegistrationState>
         get() = _registrationState
-
 
     private val _registrationState: MutableState<RegistrationState> = mutableStateOf(
         RegistrationState(
@@ -41,7 +40,7 @@ class RegistrationViewModel @Inject constructor(
     )
 
     fun registerUser() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(ioDispatcher) {
             registerUserUseCase.execute(
                 _registrationState.value.name,
                 _registrationState.value.surname,

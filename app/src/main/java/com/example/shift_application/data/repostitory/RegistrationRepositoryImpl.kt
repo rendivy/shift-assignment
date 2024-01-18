@@ -6,9 +6,6 @@ import com.example.shift_application.data.shared.CredentialsStorage
 import com.example.shift_application.domain.repository.RegistrationRepository
 import javax.inject.Inject
 
-
-
-
 class RegistrationRepositoryImpl @Inject constructor(private val credentialsStorage: CredentialsStorage) :
     RegistrationRepository {
 
