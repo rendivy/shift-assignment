@@ -13,7 +13,8 @@ class RegistrationRepositoryImpl @Inject constructor(private val credentialsStor
         credentialsStorage.saveCredentials(
             registrationBody.name,
             registrationBody.surname,
-            registrationBody.birthDate
+            registrationBody.birthDate,
+            registrationBody.password
         )
     }
 

@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class RegisterUserUseCase @Inject constructor(private val registrationRepository: RegistrationRepository) {
 
-    suspend fun execute(name: String, surname: String, birthDate: String) {
-        var registrationBody = RegistrationBody(name, surname, birthDate)
+    suspend fun execute(name: String, surname: String, birthDate: String, password: String) {
+        val registrationBody = RegistrationBody(name, surname, birthDate, password)
         registrationRepository.registerUser(registrationBody)
     }
 }

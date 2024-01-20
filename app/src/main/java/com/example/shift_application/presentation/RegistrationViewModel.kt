@@ -44,7 +44,8 @@ class RegistrationViewModel @Inject constructor(
             registerUserUseCase.execute(
                 _registrationState.value.name,
                 _registrationState.value.surname,
-                _registrationState.value.birthDate!!
+                _registrationState.value.birthDate!!,
+                _registrationState.value.password
             )
         }
     }

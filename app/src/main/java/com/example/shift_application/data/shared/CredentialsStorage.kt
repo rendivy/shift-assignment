@@ -3,6 +3,7 @@ package com.example.shift_application.data.shared
 import android.content.Context
 import androidx.security.crypto.EncryptedSharedPreferences
 import com.example.shift_application.data.entity.CredentialsBody
+import java.security.MessageDigest
 import javax.inject.Singleton
 
 
@@ -17,6 +18,13 @@ class CredentialsStorage(context: Context) {
         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
     )
 
+    private fun hashString(type: String, input: String): String {
+        val bytes = MessageDigest
+            .getInstance(type)
+            .digest(input.toByteArray())
+        return bytes.fold("") { str, it -> str + "%02x".format(it) }
+    }
+
 
     fun isUserLoggedIn(): Boolean {
         return sharedPreferences.contains("name")
@@ -30,11 +38,13 @@ class CredentialsStorage(context: Context) {
     }
 
 
-    fun saveCredentials(name: String, surname: String, birthDate: String) {
+    fun saveCredentials(name: String, surname: String, birthDate: String, password: String) {
+        val hashedPassword = hashString("SHA-256", password)
         sharedPreferences.edit()
             .putString("name", name)
             .putString("surname", surname)
             .putString("birthDate", birthDate)
+            .putString("password", hashedPassword)
             .apply()
     }
 
